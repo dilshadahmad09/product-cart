@@ -19,6 +19,7 @@ const Header = () => {
       const handleClose = () => {
         setAnchorEl(null);
       };
+      
   return (
     <Navbar bg='dark' variant='dark' style={{ height: "60px" }}>
       <Container>
