@@ -1,5 +1,8 @@
 import React from "react";
 import Table from "react-bootstrap/Table";
+import { useNavigate, useParams } from "react-router-dom";
+import { useState, useEffect } from "react";
+import { DELETE, ADD, DELETE_ONE } from "../redux/actions/action";
 
 const CardDetails = () => {
   return (
