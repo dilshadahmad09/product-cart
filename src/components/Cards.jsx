@@ -12,14 +12,25 @@ const Cards = () => {
     const sendData = (e)=>{
         dispatch(ADD(e))
     }
+    
+    const filter = ()=>{}
   return (
     <div className='container mt-3'>
-      <h1 className="text-center">Add to Carts Project</h1>
+      <h1 className='text-center'>Add to Carts Project</h1>
+      <div className='search-filter-dropdown'>
+        <div className='dropdown'>DropDown</div>
+        <div className='search'>
+          <input type='text' placeholder='search by name or category ...' />
+            <i className='fas fa-search'></i>
+        </div>
+        <div className='filter'>Filter by price</div>
+      </div>
       <div className='row d-flex justify-content-center align-items-center'>
         {data.map((element, id) => {
           return (
             <>
-              <Card key={id}
+              <Card
+                key={id}
                 style={{ width: "18rem", border: "none", textAlign: "left" }}
                 className='mx-2 mt-4 card_style'
               >
