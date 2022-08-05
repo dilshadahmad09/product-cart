@@ -34,7 +34,7 @@ const Cards = () => {
           return  setFilterData(data);
         }
     }
-    console.log(filterData)
+    // console.log(filterData)
    
     const enterHandle = (event)=>{
         if (event.key === "Enter") {
@@ -50,7 +50,7 @@ const Cards = () => {
       <div className='search-filter-dropdown'>
         <div className='dropdown'>
           <select className='dropdown' value={category} onChange={handleChange}>
-            <option active='true'>Category</option>
+            <option value="" active='true'>Category</option>
             <option value='lunch'>Lunch</option>
             <option value='dinner'>Dinner</option>
             <option value='breakFast'>Break Fast</option>
@@ -72,8 +72,10 @@ const Cards = () => {
       <div className='row d-flex justify-content-center align-items-center'>
         {data.filter((val)=>{
             if(category != ''){
+                // console.log("di", category, val.category, val)
                 return val.category.toLowerCase() === category.toLowerCase();
             }else{
+                // console.log("ah", val)
                 return val;
             }
             
