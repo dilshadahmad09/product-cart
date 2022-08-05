@@ -1,4 +1,4 @@
-import React,{useState} from "react";
+import React,{useState, useEffect} from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import Container from "react-bootstrap/Container";
 import Badge from "@mui/material/Badge";
@@ -35,6 +35,19 @@ const Header = () => {
        const deleteItem = (id)=>{
         dispatch(DELETE(id))
     }
+
+    const total = () => {
+      let price = 0;
+      getdata.map((ele, k) => {
+        price = ele.price * ele.qnty + price;
+      });
+      setPrice(price);
+    };
+
+    useEffect(() => {
+      total();
+    }, [total]);
+
   return (
     <Navbar bg='dark' variant='dark' style={{ height: "60px" }}>
       <Container>
@@ -109,7 +122,7 @@ const Header = () => {
                               fontSize: 20,
                               cursor: "pointer",
                             }}
-                            onClick={() => dlt(e.id)}
+                            onClick={() => deleteItem(e.id)}
                           >
                             <i className='fas fa-trash smalltrash'></i>
                           </p>
@@ -122,7 +135,7 @@ const Header = () => {
                             fontSize: 20,
                             cursor: "pointer",
                           }}
-                          onClick={() => dlt(e.id)}
+                          onClick={() => deleteItem(e.id)}
                         >
                           <i className='fas fa-trash largetrash'></i>
                         </td>
