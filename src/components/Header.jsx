@@ -14,16 +14,11 @@ import { DELETE } from "../redux/actions/action";
 const Header = () => {
       const [price, setPrice] = useState(0);
 
-      const getdata = useSelector((state) => state.cartreducer.carts);
+      const getdata = useSelector((state) => state.cartReducer.carts);
 
       const dispatch = useDispatch();
       const [anchorEl, setAnchorEl] = useState(null);
       const open = Boolean(anchorEl);
-
-      const getData = useSelector((state) => state.cartReducer.data);
-      
-
-      console.log("dils", getData);
 
       const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
@@ -60,7 +55,7 @@ const Header = () => {
           </NavLink>
         </Nav>
         <Badge
-          badgeContent={getData.length}
+          badgeContent={getdata.length}
           color='success'
           id='demo-positioned-button'
           aria-controls={open ? "demo-positioned-menu" : undefined}
