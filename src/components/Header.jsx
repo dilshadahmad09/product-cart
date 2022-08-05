@@ -9,11 +9,13 @@ import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import './style.css'
 import { useSelector, useDispatch } from "react-redux";
+import Table from "react-bootstrap/Table";
+
 const Header = () => {
       const [anchorEl, setAnchorEl] = useState(null);
       const open = Boolean(anchorEl);
 
-      const getData = useSelector((state) => state.cartReducer);
+      const getData = useSelector((state) => state.cartReducer.data);
       
 
       console.log("dils", getData);
@@ -37,7 +39,7 @@ const Header = () => {
           </NavLink>
         </Nav>
         <Badge
-          badgeContent={4}
+          badgeContent={getData.length}
           color='success'
           id='demo-positioned-button'
           aria-controls={open ? "demo-positioned-menu" : undefined}
@@ -46,7 +48,7 @@ const Header = () => {
           onClick={handleClick}
         >
           <i
-            class='fa-solid fa-cart-shopping text-light'
+            className='fa-solid fa-cart-shopping text-light'
             style={{ fontSize: 25, cursor: "pointer" }}
           ></i>
         </Badge>
@@ -66,29 +68,43 @@ const Header = () => {
           horizontal: "left",
         }}
       >
-        <div
-          className='card_details d-flex justify-content-center align-items-center'
-          style={{ width: "24rem", padding: 10, position: "relative" }}
-        >
-          <i
-            className='fas fa-close smallclose'
-            style={{
-              position: "absolute",
-              right: 20,
-              top: 2,
-              fontSize: 23,
-              cursor: "pointer",
-            }}
-            onClick={handleClose}
-          ></i>
-          <p style={{ fontSize: 22 }}>Your Cart is Empty!</p>
-          <img
-            className='emptycart_img'
-            style={{ width: "5rem", padding: 10 }}
-            src='https://www.pngkey.com/png/detail/231-2317260_an-empty-shopping-cart-viewed-from-the-side.png'
-            alt=''
-          />
-        </div>
+        {getData.length ? (
+          <div
+            className='card_details'
+            style={{ width: "24rem", padding: 10, position: "relative" }}
+          >
+            <Table>
+              <thead>
+                <th>Image</th>
+                <th>Restaurant</th>
+              </thead>
+            </Table>
+          </div>
+        ) : (
+          <div
+            className='card_details d-flex justify-content-center align-items-center'
+            style={{ width: "24rem", padding: 10, position: "relative" }}
+          >
+            <i
+              className='fas fa-close smallclose'
+              style={{
+                position: "absolute",
+                right: 20,
+                top: 2,
+                fontSize: 23,
+                cursor: "pointer",
+              }}
+              onClick={handleClose}
+            ></i>
+            <p style={{ fontSize: 22 }}>Your Cart is Empty!</p>
+            <img
+              className='emptycart_img'
+              style={{ width: "5rem", padding: 10 }}
+              src='https://www.pngkey.com/png/detail/231-2317260_an-empty-shopping-cart-viewed-from-the-side.png'
+              alt=''
+            />
+          </div>
+        )}
       </Menu>
     </Navbar>
   );
