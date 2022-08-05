@@ -6,18 +6,18 @@ export const ADD = (item) => {
 };
 
 // remove iteams
-export const DLT = (id) => {
+export const DELETE = (id) => {
   return {
-    type: "RMV_CART",
+    type: "DELETE_ITEM",
     payload: id,
   };
 };
 
 // remove individual iteam
 
-export const REMOVE = (iteam) => {
+export const DELETE_ONE = (iteam) => {
   return {
-    type: "RMV_ONE",
+    type: "DELETE_ONE",
     payload: iteam,
   };
 };
