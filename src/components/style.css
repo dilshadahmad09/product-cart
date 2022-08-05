@@ -99,3 +99,12 @@
      color: white;
      padding: 8px;
   }
+
+  .dropdown > select{
+    border: none;
+    outline: none;
+    background-color:rgb(25,135,84) ;
+    padding: 8px;
+    border-radius: 6px;
+    color: white;
+  }

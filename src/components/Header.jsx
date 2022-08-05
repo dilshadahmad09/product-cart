@@ -44,7 +44,7 @@ const Header = () => {
     }, [total]);
 
   return (
-    <Navbar bg='dark' variant='dark' style={{ height: "60px" }}>
+    <Navbar bg='dark' variant='dark' style={{ height: "60px", position:'sticky',top:0 , zIndex:10}}>
       <Container>
         <NavLink to='/' className='text-decoration-none text-light mx-3'>
           Add to Cart

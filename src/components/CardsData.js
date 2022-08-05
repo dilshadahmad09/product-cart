@@ -13,6 +13,7 @@ const Cardsdata = [
     arrimg:
       "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
     qnty: 0,
+    category: "dinner",
   },
   {
     id: 2,
@@ -28,6 +29,7 @@ const Cardsdata = [
     arrimg:
       "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
     qnty: 0,
+    category: "lunch",
   },
   {
     id: 3,
@@ -43,6 +45,7 @@ const Cardsdata = [
     arrimg:
       "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
     qnty: 0,
+    category: "dinner",
   },
   {
     id: 4,
@@ -58,6 +61,7 @@ const Cardsdata = [
     arrimg:
       "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
     qnty: 0,
+    category: "breakFast",
   },
   {
     id: 5,
@@ -73,6 +77,7 @@ const Cardsdata = [
     arrimg:
       "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
     qnty: 0,
+    category: "lunch",
   },
   {
     id: 6,
@@ -88,6 +93,7 @@ const Cardsdata = [
     arrimg:
       "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
     qnty: 0,
+    category: "lunch",
   },
   {
     id: 7,
@@ -103,6 +109,7 @@ const Cardsdata = [
     arrimg:
       "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
     qnty: 0,
+    category: "dinner",
   },
   {
     id: 8,
@@ -118,6 +125,7 @@ const Cardsdata = [
     arrimg:
       "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
     qnty: 0,
+    category: "breakFast",
   },
   {
     id: 9,
@@ -133,6 +141,7 @@ const Cardsdata = [
     arrimg:
       "https://b.zmtcdn.com/data/o2_assets/4bf016f32f05d26242cea342f30d47a31595763089.png?output-format=webp",
     qnty: 0,
+    category: "breakFast",
   },
 ];
 
