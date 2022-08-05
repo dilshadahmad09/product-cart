@@ -2,7 +2,10 @@ import React from 'react'
 
 const CardDetails = () => {
   return (
-    <div>CardDetails</div>
+    <div className='container'>
+        <h1>Items detail's page</h1>
+        
+    </div>
   )
 }
 
