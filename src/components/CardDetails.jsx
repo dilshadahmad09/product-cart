@@ -3,8 +3,52 @@ import Table from "react-bootstrap/Table";
 import { useNavigate, useParams } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { DELETE, ADD, DELETE_ONE } from "../redux/actions/action";
+import { useSelector, useDispatch } from "react-redux";
 
 const CardDetails = () => {
+
+    
+   const [data, setData] = useState([]);
+   // console.log(data);
+
+   const { id } = useParams();
+   // console.log(id);
+
+   const navigate = useNavigate();
+
+   const dispatch = useDispatch();
+
+   const getdata = useSelector((state) => state.cartreducer.carts);
+   // console.log(getdata);
+
+   const compare = () => {
+     let comparedata = getdata.filter((e) => {
+       return e.id == id;
+     });
+     setData(comparedata);
+   };
+
+   // add data
+
+   const send = (e) => {
+     // console.log(e);
+     dispatch(ADD(e));
+   };
+
+   const dlt = (id) => {
+     dispatch(DELETE(id));
+     navigate("/");
+   };
+
+   // remove one
+   const remove = (item) => {
+     dispatch(DELETE_ONE(item));
+   };
+
+   useEffect(() => {
+     compare();
+   }, [id]);
+
   return (
     <div className='container mt-2'>
       <h1>Items detail's page</h1>
