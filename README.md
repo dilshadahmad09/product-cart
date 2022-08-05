@@ -7,7 +7,7 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 In the project directory, you can run:
 
 ### `Run this url link on the tab`
-Open [https://sprightly-cuchufli-a3caef.netlify.app/].
+Open [https://product-carts-app-dilshad.netlify.app/].
 
 ## Steps to use this App.
 ### 1. Run url on the tab. 
