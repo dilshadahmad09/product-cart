@@ -10,6 +10,7 @@ import { useDispatch } from 'react-redux';
 const Cards = () => {
     const [data, setData] = useState(Cardsdata);
     const [searchItem, setSearchItem] = useState('');
+    const [filterData, setFilterData] = useState([]);
     const [category, setCategory] = useState('');
     const dispatch = useDispatch();
     const sendData = (e)=>{
@@ -23,23 +24,20 @@ const Cards = () => {
     }
 
     const filterByName = ()=>{
-       let filterData =  data.filter((item) => {
-          if (searchItem == "") {
-            return item;
-          } else if (
-            item.rname.toLowerCase().includes(searchItem.toLowerCase())
-          ) {
-            return item;
-          } else {
-            return [];
-          }
-        });
-       return setData([...filterData]);
+        if(searchItem !== ""){
+           let filterD = data.filter((val)=>{
+                return val.rname.toLowerCase().includes(searchItem.toLowerCase());
+           })
+           
+          return setFilterData(filterD);
+        }else{
+          return  setFilterData(data);
+        }
     }
+    console.log(filterData)
    
     const enterHandle = (event)=>{
         if (event.key === "Enter") {
-          console.log("dils");
           return filterByName();
         }
     }
@@ -65,23 +63,21 @@ const Cards = () => {
             onKeyPress={enterHandle}
             onChange={(e) => setSearchItem(e.target.value)}
           />
-          <i className='fas fa-search' onClick={() => filterByName()}></i>
+          <i className='fas fa-search' onClick={() =>{}}></i>
         </div>
         <div className='filter'>
           <button onClick={() => sortByRating()}>Sort By Rating</button>
         </div>
       </div>
       <div className='row d-flex justify-content-center align-items-center'>
-        {data
-          .filter((val) => {
-            if (category === "") {
-              return val;
-            } else if (val.category.toLowerCase().includes(category)) {
-              return val;
-            } else {
-              return [];
+        {data.filter((val)=>{
+            if(category != ''){
+                return val.category.toLowerCase() === category.toLowerCase();
+            }else{
+                return val;
             }
-          })
+            
+        })
           .map((element) => {
             return (
               <>
