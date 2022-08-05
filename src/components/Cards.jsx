@@ -9,16 +9,37 @@ import { useDispatch } from 'react-redux';
 import Dropdown from "react-bootstrap/Dropdown";
 const Cards = () => {
     const [data, setData] = useState(Cardsdata);
+    const [searchItem, setSearchItem] = useState('');
     const dispatch = useDispatch();
     const sendData = (e)=>{
         dispatch(ADD(e))
     }
-     console.log(data);
     const sortByRating = ()=>{
         let sorted = data.sort((a,b)=>{
             return Number(b.rating) - Number(a.rating);
         })
-        setData(sorted)
+       return setData(sorted)
+    }
+
+    const filterByName = ()=>{
+       let filterData =  data.filter((item) => {
+          if (searchItem == "") {
+            return item;
+          } else if (
+            item.rname.toLowerCase().includes(searchItem.toLowerCase())
+          ) {
+            return item;
+          } else {
+            return [];
+          }
+        });
+        setData(filterData);
+    }
+
+    const onKeyPress = (e)=>{
+        if(e.key === 'Enter'){
+            return filterByName();
+        }
     }
   return (
     <div className='container mt-3'>
@@ -31,15 +52,15 @@ const Cards = () => {
             </Dropdown.Toggle>
 
             <Dropdown.Menu>
-              <Dropdown.Item href='#/action-1'>Dinner</Dropdown.Item>
-              <Dropdown.Item href='#/action-2'>Lunch</Dropdown.Item>
-              <Dropdown.Item href='#/action-3'>Break Fast</Dropdown.Item>
+              <Dropdown.Item >Dinner</Dropdown.Item>
+              <Dropdown.Item >Lunch</Dropdown.Item>
+              <Dropdown.Item >Break Fast</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </div>
         <div className='search'>
-          <input type='text' placeholder='search by name or category ...' />
-          <i className='fas fa-search'></i>
+          <input type='text' placeholder='search by name or category ...' onKeyPress={()=>onKeyPress} onChange={(e)=> setSearchItem(e.target.value)} />
+          <i className='fas fa-search' onClick={()=>filterByName()}></i>
         </div>
         <div className='filter'>
           <button onClick={() => sortByRating()}>Sort By Rating</button>
