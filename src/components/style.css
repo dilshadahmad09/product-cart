@@ -92,6 +92,10 @@
     color: grey;
     cursor: pointer;
   }
-  .dropdown{
-    
+  .filter > button{
+     border: none;
+     background-color: rgb(25,135,84);
+     border-radius: 6px;
+     color: white;
+     padding: 8px;
   }

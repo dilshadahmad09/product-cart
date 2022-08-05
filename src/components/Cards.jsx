@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { useState } from 'react';
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
@@ -14,14 +14,12 @@ const Cards = () => {
         dispatch(ADD(e))
     }
      console.log(data);
-    const filter = ()=>{
-        setData(data.sort((a,b)=>{
-            return b.rating - a.rating;
-        }))
-       
-        console.log("dilshad",data)
+    const sortByRating = ()=>{
+        let sorted = data.sort((a,b)=>{
+            return Number(b.rating) - Number(a.rating);
+        })
+        setData(sorted)
     }
-
   return (
     <div className='container mt-3'>
       <h1 className='text-center'>Add to Carts Project</h1>
@@ -44,7 +42,7 @@ const Cards = () => {
           <i className='fas fa-search'></i>
         </div>
         <div className='filter'>
-          <button onClick={filter}>Filter By Price</button>
+          <button onClick={() => sortByRating()}>Sort By Rating</button>
         </div>
       </div>
       <div className='row d-flex justify-content-center align-items-center'>
