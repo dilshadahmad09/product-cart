@@ -10,11 +10,16 @@ In the project directory, you can run:
 Open [https://sprightly-cuchufli-a3caef.netlify.app/].
 
 ## Steps to use this App.
-### 1. Run url on the tab. 2 Click Add to cart button and see on the right corner badge and click on the same you will see the product and here when you will click
-### on the Image, this will direct to you the Details page of the product. Here You can increase and decrease the quantity of the product and price.
+### 1. Run url on the tab. 
+### 2. Click Add to cart button and see on the right corner badge and here you can delete the product and can see total price. If you are click same product then it will increase only quantity and price. when you click on the same you will see the product and here when you will click
+### on the Image, this will direct to you the Details page of the product. There You can increase and decrease the quantity of the product and price. if deletes all quantity then cart will be empty and redirect to you on home page.
 ### 3. Filter by Rating.
 ### Filter By Category dropdown.
-### Note:
+### Note: Searching functinality is working but giving some error and affecting entire page. that's why I commented out it and I will resolve it soon.
+
+
+
+
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
