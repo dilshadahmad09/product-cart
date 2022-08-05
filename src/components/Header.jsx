@@ -10,8 +10,13 @@ import MenuItem from "@mui/material/MenuItem";
 import './style.css'
 import { useSelector, useDispatch } from "react-redux";
 import Table from "react-bootstrap/Table";
-
+import { DELETE } from "../redux/actions/action";
 const Header = () => {
+      const [price, setPrice] = useState(0);
+
+      const getdata = useSelector((state) => state.cartreducer.carts);
+
+      const dispatch = useDispatch();
       const [anchorEl, setAnchorEl] = useState(null);
       const open = Boolean(anchorEl);
 
@@ -27,6 +32,9 @@ const Header = () => {
         setAnchorEl(null);
       };
       
+       const deleteItem = (id)=>{
+        dispatch(DELETE(id))
+    }
   return (
     <Navbar bg='dark' variant='dark' style={{ height: "60px" }}>
       <Container>
@@ -68,16 +76,62 @@ const Header = () => {
           horizontal: "left",
         }}
       >
-        {getData.length ? (
-          <div
-            className='card_details'
-            style={{ width: "24rem", padding: 10, position: "relative" }}
-          >
+        {getdata.length ? (
+          <div className='card_details' style={{ width: "24rem", padding: 10 }}>
             <Table>
               <thead>
-                <th>Image</th>
-                <th>Restaurant</th>
+                <tr>
+                  <th>Photo</th>
+                  <th>Restaurant Name</th>
+                </tr>
               </thead>
+              <tbody>
+                {getdata.map((e) => {
+                  return (
+                    <>
+                      <tr>
+                        <td>
+                          <NavLink to={`/cart/${e.id}`} onClick={handleClose}>
+                            <img
+                              src={e.imgdata}
+                              style={{ width: "5rem", height: "5rem" }}
+                              alt=''
+                            />
+                          </NavLink>
+                        </td>
+                        <td>
+                          <p>{e.rname}</p>
+                          <p>Price : ₹{e.price}</p>
+                          <p>Quantity : {e.qnty}</p>
+                          <p
+                            style={{
+                              color: "red",
+                              fontSize: 20,
+                              cursor: "pointer",
+                            }}
+                            onClick={() => dlt(e.id)}
+                          >
+                            <i className='fas fa-trash smalltrash'></i>
+                          </p>
+                        </td>
+
+                        <td
+                          className='mt-5'
+                          style={{
+                            color: "red",
+                            fontSize: 20,
+                            cursor: "pointer",
+                          }}
+                          onClick={() => dlt(e.id)}
+                        >
+                          <i className='fas fa-trash largetrash'></i>
+                        </td>
+                      </tr>
+                    </>
+                  );
+                })}
+                <p className='text-center'>Total :₹ {price}</p>
+              </tbody>
             </Table>
           </div>
         ) : (
@@ -87,21 +141,21 @@ const Header = () => {
           >
             <i
               className='fas fa-close smallclose'
+              onClick={handleClose}
               style={{
                 position: "absolute",
-                right: 20,
                 top: 2,
+                right: 20,
                 fontSize: 23,
                 cursor: "pointer",
               }}
-              onClick={handleClose}
             ></i>
-            <p style={{ fontSize: 22 }}>Your Cart is Empty!</p>
+            <p style={{ fontSize: 22 }}>Your carts is empty</p>
             <img
+              src='./cart.gif'
+              alt=''
               className='emptycart_img'
               style={{ width: "5rem", padding: 10 }}
-              src='https://www.pngkey.com/png/detail/231-2317260_an-empty-shopping-cart-viewed-from-the-side.png'
-              alt=''
             />
           </div>
         )}
