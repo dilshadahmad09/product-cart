@@ -6,14 +6,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### `Run this url link on the tab`
+Open [https://sprightly-cuchufli-a3caef.netlify.app/].
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
-
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
-
+## Steps to use this App.
+### 1. Run url on the tab. 2 Click Add to cart button and see on the right corner badge and click on the same you will see the product and here when you will click
+### on the Image, this will direct to you the Details page of the product. Here You can increase and decrease the quantity of the product and price.
+### 3. Filter by Rating.
+### Filter By Category dropdown.
+### Note:
 ### `npm test`
 
 Launches the test runner in the interactive watch mode.\
