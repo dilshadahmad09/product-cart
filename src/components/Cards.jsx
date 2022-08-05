@@ -4,9 +4,14 @@ import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import Cardsdata from './CardsData';
 import './style.css';
+import { ADD } from '../redux/actions/action';
+import { useDispatch } from 'react-redux';
 const Cards = () => {
     const [data, setData] = useState(Cardsdata);
-    
+    const dispatch = useDispatch();
+    const sendData = (e)=>{
+        dispatch(ADD(e))
+    }
   return (
     <div className='container'>
       <h1>Add to Carts Project</h1>
@@ -14,7 +19,7 @@ const Cards = () => {
        {
         data.map((element, id)=>{
             return (
-              <>
+              <div key={id}>
                 <Card
                   style={{ width: "18rem", border: "none", textAlign: "left" }}
                   className='mx-2 mt-4 card_style'
@@ -33,11 +38,11 @@ const Cards = () => {
                     </Card.Text>
                     <Card.Text>Price : ₹ {element.price}</Card.Text>
                     <div className='button_div d-flex justify-content-center align-items-center'>
-                      <Button variant='primary'className='col-lg-12'>Add to Carts</Button>
+                      <Button onClick={()=>sendData(element)} variant='primary'className='col-lg-12'>Add to Carts</Button>
                     </div>
                   </Card.Body>
                 </Card>
-              </>
+              </div>
             );
         })
        }

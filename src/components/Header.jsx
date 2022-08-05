@@ -8,11 +8,16 @@ import { NavLink } from "react-router-dom";
 import Menu from "@mui/material/Menu";
 import MenuItem from "@mui/material/MenuItem";
 import './style.css'
-
+import { useSelector, useDispatch } from "react-redux";
 const Header = () => {
-
       const [anchorEl, setAnchorEl] = useState(null);
       const open = Boolean(anchorEl);
+
+      const getData = useSelector((state) => state.cartReducer);
+      
+
+      console.log("dils", getData);
+
       const handleClick = (event) => {
         setAnchorEl(event.currentTarget);
       };
