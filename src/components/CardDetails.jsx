@@ -10,7 +10,9 @@ const CardDetails = () => {
     
    const [data, setData] = useState([]);
    // console.log(data);
-
+    
+   // get id from url dynamically
+   
    const { id } = useParams();
    // console.log(id);
 
@@ -40,7 +42,7 @@ const CardDetails = () => {
      navigate("/");
    };
 
-   // remove one
+   // remove one item
    const deleteOne = (item) => {
      dispatch(DELETE_ONE(item));
    };
