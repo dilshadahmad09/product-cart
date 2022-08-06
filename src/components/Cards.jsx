@@ -1,65 +1,74 @@
 import React, { useState, useEffect } from "react";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import Cardsdata from './CardsData';
-import './style.css';
-import { ADD } from '../redux/actions/action';
-import { useDispatch } from 'react-redux';
+import Cardsdata from "./CardsData";
+import "./style.css";
+import { ADD } from "../redux/actions/action";
+import { useDispatch } from "react-redux";
 
 const Cards = () => {
-    const [data, setData] = useState(Cardsdata);
-    const [searchItem, setSearchItem] = useState('');
-    const [filterData, setFilterData] = useState([]);
-    const [category, setCategory] = useState('');
-    const [price, setPrice] = useState('')
+  const [data, setData] = useState(Cardsdata);
+  const [searchItem, setSearchItem] = useState("");
+  const [otherData, setOtherData] = useState(Cardsdata);
+  const [category, setCategory] = useState("");
+  const [price, setPrice] = useState("");
 
-    const dispatch = useDispatch();
-    const sendData = (e)=>{
-        dispatch(ADD(e))
-    }
-    const sortByRating = ()=>{
-        let sorted = data.sort((a,b)=>{
-            return Number(b.rating) - Number(a.rating);
-        })
-       return setData([...sorted])
-    }
+  const dispatch = useDispatch();
+  const sendData = (e) => {
+    dispatch(ADD(e));
+  };
+  const sortByRating = () => {
+    let sorted = data.sort((a, b) => {
+      return Number(b.rating) - Number(a.rating);
+    });
+    return setData([...sorted]);
+  };
 
-    const filterByName = ()=>{
-        if(searchItem !== ""){
-           let filterD = data.filter((val)=>{
-                return val.rname.toLowerCase().includes(searchItem.toLowerCase());
-           })
-           
-          return setFilterData(filterD);
-        }else{
-          return  setFilterData(data);
-        }
+  const filterByName = () => {
+    let filterD = [];
+    if (searchItem !== "") {
+      filterD = otherData.filter((val) => {
+        return val.rname.toLowerCase().includes(searchItem.toLowerCase());
+      });
+      return setData([...filterD]);
+    } else {
+      console.log("da", data);
+      return setData(data);
     }
-    // console.log(filterData)
-   
-    const enterHandle = (event)=>{
-        if (event.key === "Enter") {
-          return filterByName();
-        }
-    }
-    const handleChange = (e)=>{
-        setCategory(e.target.value);
-    }
+  };
+  useEffect(() => {
+    filterByName();
+  }, [searchItem]);
+  // console.log(filterData)
 
+  const enterHandle = (event) => {
+    if (event.key === "Enter") {
+      return filterByName();
+    }
+  };
+  const handleChange = (e) => {
+    setCategory(e.target.value);
+  };
 
-    useEffect(() => {
-      console.log("data", data)
-      if (price === "asc") {
-        const lth = data.sort((a, b) => a.price - b.price);
-        console.log("asc", lth)
-        setData([...lth]);
-      }
-      if (price === "desc") {
-        const htl = data.sort((a, b) => b.price - a.price);
-        console.log("desc", htl)
-        setData([...htl]);
-      }
-    }, [price]);
+  useEffect(() => {
+    if (price === "asc") {
+      const lth = data.sort((a, b) => a.price - b.price);
+      setData([...lth]);
+    }
+    if (price === "desc") {
+      const htl = data.sort((a, b) => b.price - a.price);
+      setData([...htl]);
+    }
+  }, [price]);
+
+  const dataManagement = (e)=>{
+    console.log("rohn", e.target.value)
+    if(e.target.value.length === 0){
+      setData(otherData);
+    }else{
+    setSearchItem(e.target.value);
+    }
+  }
   return (
     <div className='container mt-3'>
       <h1 className='text-center'>Add to Carts Project</h1>
@@ -79,7 +88,7 @@ const Cards = () => {
             type='text'
             placeholder='search...'
             onKeyPress={enterHandle}
-            onChange={(e) => setSearchItem(e.target.value)}
+            onChange={dataManagement}
           />
           <i className='fas fa-search' onClick={() => {}}></i>
         </div>
@@ -91,7 +100,7 @@ const Cards = () => {
           <select
             className='dropdown'
             value={price}
-            onChange={(e)=> setPrice(e.target.value)}
+            onChange={(e) => setPrice(e.target.value)}
           >
             <option value='' active='true'>
               Filter By Price
@@ -152,6 +161,6 @@ const Cards = () => {
       </div>
     </div>
   );
-}
+};
 
-export default Cards
+export default Cards;
