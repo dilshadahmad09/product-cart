@@ -1,4 +1,4 @@
-# Getting Started with Create React App
+# Simple Cart Product App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
@@ -6,13 +6,19 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 
 In the project directory, you can run:
 
-### `npm start`
+### `Run this url link on the tab`
+Open [https://product-carts-app-dilshad.netlify.app/].
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Steps to use this App.
+### 1. Run url on the tab. 
+### 2. Click Add to cart button and see on the right corner badge and here you can delete the product and can see total price. If you are click same product then it will increase only quantity and price. when you click on the same you will see the product and here when you will click
+### on the Image, this will direct to you the Details page of the product. There You can increase and decrease the quantity of the product and price. if deletes all quantity then cart will be empty and redirect to you on home page.
+### 3. Filter by Rating.
+### Filter By Category dropdown.
+### Note: Searching functinality is working but giving some error and affecting entire page. that's why I commented out it and I will resolve it soon.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+
+
 
 ### `npm test`
 
